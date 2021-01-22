@@ -1,0 +1,185 @@
+[
+  {
+    "id": "pushover",
+    "execute-command": "/root/darknetnx/nxalert/bookmark.sh",
+    "command-working-directory": "/root/darknetnx/nxalert",
+          "pass-arguments-to-command":
+    [
+      {
+        "source": "url",
+        "name": "camid",
+        "envname": "CAMID"
+      },
+      {
+        "source": "url",
+        "name": "server",
+        "envname": "SERVER"
+      },
+      {
+        "source": "url",
+        "name": "user",
+        "envname": "USER"
+      },
+      {
+        "source": "url",
+        "name": "pass",
+        "envname": "PASS"
+      },
+      {
+        "source": "url",
+        "name": "pushovertoken",
+        "envname": "PUSHOVERTOKEN"
+      },
+      {
+        "source": "url",
+        "name": "pushoveruser",
+        "envname": "PUSHOVERUSER"
+      }
+
+   ]
+  },
+
+ {
+    "id": "quickmark",
+    "execute-command": "/root/darknetnx/nxalert/quickmark.sh",
+    "command-working-directory": "/root/darknetnx/nxalert/",
+          "pass-arguments-to-command":
+    [
+      {
+        "source": "url",
+        "name": "camid",
+        "envname": "CAMID"
+      },
+      {
+        "source": "url",
+        "name": "server",
+        "envname": "SERVER"
+      },
+      {
+        "source": "url",
+        "name": "user",
+        "envname": "USER"
+      },
+      {
+        "source": "url",
+        "name": "pass",
+        "envname": "PASS"
+      },
+      {
+        "source": "url",
+        "name": "pushovertoken",
+        "envname": "PUSHOVERTOKEN"
+      },
+      {
+        "source": "url",
+        "name": "pushoveruser",
+        "envname": "PUSHOVERUSER"
+      }
+]
+},
+
+      {
+    "id": "darknet",
+    "execute-command": "/root/darknetnx/darknetnx.sh",
+    "command-working-directory": "/root/darknetnx",
+          "pass-arguments-to-command":
+    [
+      {
+        "source": "url",
+        "name": "camid",
+        "envname": "CAMID"
+      },
+      {
+        "source": "url",
+        "name": "server",
+        "envname": "SERVER"
+      },
+      {
+        "source": "url",
+        "name": "user",
+        "envname": "USER"
+      },
+      {
+        "source": "url",
+        "name": "pass",
+        "envname": "PASS"
+      },
+      {
+        "source": "url",
+        "name": "model",
+        "envname": "MODEL"
+      },
+      {
+        "source": "url",
+        "name": "name",
+        "envname": "NAME"
+      },
+      {
+        "source": "url",
+        "name": "pushovertoken",
+        "envname": "PUSHOVERTOKEN"
+      },
+      {
+        "source": "url",
+        "name": "pushoveruser",
+        "envname": "PUSHOVERUSER"
+      },
+      {
+        "source": "url",
+        "name": "runtime",
+        "envname": "RUNTIME"
+      }
+
+
+   ]
+   },
+{
+    "id": "darknettail",
+    "execute-command": "/root/darknetnx/darknetnx.sh && /root/darknetnx/darknetnx.sh && /root/darknetnx/darknetnx.sh",
+    "command-working-directory": "/root/darknetnx",
+          "pass-arguments-to-command":
+    [
+      {
+        "source": "url",
+        "name": "camid",
+        "envname": "CAMID"
+      },
+      {
+        "source": "url",
+        "name": "server",
+        "envname": "SERVER"
+      },
+      {
+        "source": "url",
+        "name": "user",
+        "envname": "USER"
+      },
+      {
+        "source": "url",
+        "name": "pass",
+        "envname": "PASS"
+      },
+      {
+        "source": "url",
+        "name": "model",
+        "envname": "MODEL"
+      },
+      {
+        "source": "url",
+        "name": "name",
+        "envname": "NAME"
+      },
+      {
+        "source": "url",
+        "name": "pushovertoken",
+        "envname": "PUSHOVERTOKEN"
+      },
+     {
+        "source": "url",
+        "name": "pushoveruser",
+        "envname": "PUSHOVERUSER"
+      }
+]
+}
+
+]

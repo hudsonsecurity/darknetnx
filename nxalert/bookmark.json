@@ -1,0 +1,124 @@
+[
+  {
+    "id": "bookmark",
+    "execute-command": "/root/nxgif/bookmark.sh",
+    "command-working-directory": "/root/nxgif",
+	  "pass-arguments-to-command":
+    [
+      {
+        "source": "url",
+        "name": "camid",
+	"envname": "CAMID"
+      },
+      {
+        "source": "url",
+        "name": "server",
+        "envname": "SERVER"
+      },
+      {
+        "source": "url",
+        "name": "user",
+        "envname": "USER"
+      },
+      {
+        "source": "url",
+        "name": "pass",
+        "envname": "PASS"
+      },
+      {
+        "source": "url",
+        "name": "pushovertoken",
+        "envname": "PUSHOVERTOKEN"
+      },
+      {
+        "source": "url",
+        "name": "pushoveruser",
+        "envname": "PUSHOVERUSER"
+      }
+
+   ]
+  },
+  {
+    "id": "quickmark",
+    "execute-command": "/root/nxgif/quickmark.sh",
+    "command-working-directory": "/root/nxgif",
+          "pass-arguments-to-command":
+    [
+      {
+        "source": "url",
+        "name": "camid",
+        "envname": "CAMID"
+      },
+      {
+        "source": "url",
+        "name": "server",
+        "envname": "SERVER"
+      },
+      {
+        "source": "url",
+        "name": "user",
+        "envname": "USER"
+      },
+      {
+        "source": "url",
+        "name": "pass",
+        "envname": "PASS"
+      },
+      {
+        "source": "url",
+        "name": "pushovertoken",
+        "envname": "PUSHOVERTOKEN"
+      },
+      {
+        "source": "url",
+        "name": "pushoveruser",
+        "envname": "PUSHOVERUSER"
+      }
+]
+},
+      {
+    "id": "camio",
+    "execute-command": "/root/nxgif/camio.sh",
+    "command-working-directory": "/root/nxgif",
+          "pass-arguments-to-command":
+    [
+      {
+        "source": "url",
+        "name": "camid",
+        "envname": "CAMID"
+      },
+      {
+        "source": "url",
+        "name": "server",
+        "envname": "SERVER"
+      },
+      {
+        "source": "url",
+        "name": "user",
+        "envname": "USER"
+      },
+      {
+        "source": "url",
+        "name": "pass",
+        "envname": "PASS"
+      },
+      {
+        "source": "url",
+        "name": "pushovertoken",
+        "envname": "PUSHOVERTOKEN"
+      },
+      {
+        "source": "url",
+        "name": "pushoveruser",
+        "envname": "PUSHOVERUSER"
+      },
+	    {
+        "source": "url",
+        "name": "query",
+        "envname": "QUERY"
+      }
+
+   ]
+   }
+
+]

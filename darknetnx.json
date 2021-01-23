@@ -114,6 +114,12 @@
         "name": "name",
         "envname": "NAME"
       },
+
+      {
+        "source": "url",
+        "name": "runtime",
+        "envname": "RUNTIME"
+      },
       {
         "source": "url",
         "name": "pushovertoken",
@@ -123,11 +129,6 @@
         "source": "url",
         "name": "pushoveruser",
         "envname": "PUSHOVERUSER"
-      },
-      {
-        "source": "url",
-        "name": "runtime",
-        "envname": "RUNTIME"
       }
 
 

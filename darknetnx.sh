@@ -5,9 +5,9 @@ CAMID=$1
 SERVER=$2
 USER=$3
 PASS=$4
-PUSHOVERTOKEN="$7"
-PUSHOVERUSER="$8"
-RUNTIME=$7
+#PUSHOVERTOKEN="$7"
+#PUSHOVERUSER="$8"
+RUNTIME="$7"
 CREDS="$3:$4"
 MODEL="$5"
 NAME="$6"
@@ -25,12 +25,12 @@ DIR=/tmp/$CAMID
 
 
 loop (){
-x=$7
-while true;
-do
+x="$7"
+y=0
+until [ $y = $RUNTIME ]; do
+
 mkdir -p /tmp/$CAMID/
 #get the screenshot of the camera from dw spectrum
-echo test
 wget --no-check-certificate "$THUMB"
 TIMESTAMP=`date -d "$TME 1 seconds ago" +%Y-%m-%dT%H:%M:%S`
 mv $FILE /tmp/$CAMID/FILE
@@ -45,8 +45,10 @@ $MODEL
 #getting the results from the deep learning
 echo
 results
+y=$(($y+1))
 #close the loop
 echo "Graceful shutdown"
+sleep 3
 done
 }
 
@@ -180,7 +182,6 @@ data
 else
 echo "No objects of interest detected"
 RESULT="None"
-exit
 fi
 }
 
@@ -236,7 +237,6 @@ echo "Object: $RESULT"
 echo "Similar object detected not reporting or low confidence"
 fi
 #end the if statement
-exit
 }
 
 

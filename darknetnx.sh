@@ -5,24 +5,17 @@ CAMID=$1
 SERVER=$2
 USER=$3
 PASS=$4
-#PUSHOVERTOKEN="$7"
-#PUSHOVERUSER="$8"
-RUNTIME="$7"
 CREDS="$3:$4"
 MODEL="$5"
 NAME="$6"
-#QUERY="$7"
-#MODEL="$1"
-#CREDS="$3:$4"
-#CAMID="$2"
-#NAME="$5"
-#STATE="$6"
-#SERVER=192.168.1.250:7001
+RUNTIME="$7"
+THRESHOLD="$8"
+TGTOKEN="$9"
+TGID="${10}"
 FILE="cameraThumbnail?cameraId=$CAMID"
-THUMB=https://$CREDS@$SERVER/ec2/$FILE
-#NXEVENT=http://144.202.0.208:1337
+THUMB=http://$CREDS@$SERVER/ec2/$FILE
 DIR=/tmp/$CAMID
-
+TIMESTAMP=`date -d "now" +%Y-%m-%dT%H:%M:%S`
 
 loop (){
 x="$7"
@@ -31,8 +24,8 @@ until [ $y = $RUNTIME ]; do
 
 mkdir -p /tmp/$CAMID/
 #get the screenshot of the camera from dw spectrum
+
 wget --no-check-certificate "$THUMB"
-TIMESTAMP=`date -d "$TME 1 seconds ago" +%Y-%m-%dT%H:%M:%S`
 mv $FILE /tmp/$CAMID/FILE
 #interest region cropping
 #convert -crop +0+200 FILE FILE
@@ -111,7 +104,7 @@ NUMBER=`cat /$DIR/results.txt | grep 'car\|person\|truck\|vehicle\|cat\|dog' | h
 echo "Send generic event to DW Server at $SERVER"
 #send generic event to dw spectrum
 echo "$NUMBER"
-curl -k "https://$CREDS@$SERVER/api/createEvent?timestamp=$TIMESTAMP&source=$SOURCE-$NAME&caption=$RESULT%20$NUMBER%25&description=$NAME%20using%20$MODEL&metadata=%7B%22cameraRefs%22%3A%5B%22$CAMID%22%5D%7D"
+curl -k "http://$CREDS@$SERVER/api/createEvent?timestamp=$TIMESTAMP&source=$SOURCE-$NAME&caption=$RESULT%20$NUMBER%25&description=$NAME%20using%20$MODEL&metadata=%7B%22cameraRefs%22%3A%5B%22$CAMID%22%5D%7D"
 
 
 #send notification via nxevents and pushover with a thumbnail
@@ -123,8 +116,17 @@ rm $DIR/FILE
 rm $DIR/FILE
 rm $DIR/results.txt
 #CLEANUP FINISHED
-exit
 }
+
+sendtelegram (){
+#send to telegram
+echo "sending to telegram"
+echo "$TGTOKEN"
+echo "$TGID"
+./telegram -t $TGTOKEN -c $TGID -i /root/darknetnx/predictions.jpg  "$RESULT $CONF detected on $NAME"
+}
+
+
 
 sendpushover (){
 echo "sending pushover"
@@ -213,16 +215,21 @@ fi
 echo "OBJECT: $RESULT"
 echo "CONFIDENCE: $CONF"
 echo "LEFT DIFFERENCE: $DIFF"
-
+#confidence without percent to use as integer
+CLEVEL=`echo $CONF | tr -d % | bc`
+if [[ $CLEVEL -gt $THRESHOLD ]];
+then
+echo "$CLEVEL is greater than $THRESHOLD"
 #if the difference between the object is greater than 50 pixels report as new object
 if [[ "$RESULT" == *"Vehicle"* ]] && [ $DIFF -gt 50 ]
 then
 echo "New vehicle object event"
 echo "using vehicle rules"
 sendnx
+sendtelegram
 #sendpushover
 #if the result is person and the pixel difference is 10
-elif [[ "$RESULT" = *"Person"* ]] && [ $DIFF -gt 20 ]
+elif [[ "$RESULT" = *"Person"* ]] && [ $DIFF -gt 30 ]
  then
 echo "New person object event"
 sendnx
@@ -235,6 +242,7 @@ sendnx
 else
 echo "Object: $RESULT"
 echo "Similar object detected not reporting or low confidence"
+fi
 fi
 #end the if statement
 }

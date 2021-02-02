@@ -1,7 +1,8 @@
 DARKNETNX - Darknet YoloV4 in NX VMS
 by MATTHEW DEL SALTO @ RETROSPECT.VIDEO
-
-JANUARY 22 2021
+LATEST UPDATE: FEB 02 2021
+Integrated confidence level parameter as threshold.
+Integrated telegram notifications with parameters tgtoken tgid.
 
 PREAMBLE:
 All of my work is free software, free as in freedom. GPL V3.
@@ -54,7 +55,7 @@ e. the desired yolo model you want to run
 f. arbitrary camera name for notifications in NX
 
 Event trigger example:
-http://192.168.1.219:1337/hooks/darknet?camid=dbeba7ec-6e25-856c-395b-d4b3993d2446&server=192.168.1.50:7001&user=ai&pass=ai123456&model=darknet-yolov4-tiny&name=Entrance&pushovertoken=pushovertokenhttp://192.168.1.219:1337/hooks/darknet?camid=dbeba7ec-6e25-856c-395b-d4b3993d2446&server=192.168.1.50:7001&user=ai&pass=ai123456&model=darknet-yolov4-tiny&name=Entrance&pushovertoken=pushtoken&pushoveruser=pushuserid
+http://192.168.1.219:1337/hooks/darknet?camid=dbeba7ec-6e25-856c-395b-d4b3993d2446&server=192.168.1.198:7001&user=ai&pass=ai123456&model=darknet-yolov4-tiny&name=Entrance&runtime=8&threshold=35&tgtoken=telegrambottoken&tgid=telegramuserid
 
 4. Create an event inside of NX that triggers based on the darknet generic event containing the variables of successful detection IE: Person or Vehicle
 5. Use this event to create a bookmark, push notification or anything else you can trigger with events!

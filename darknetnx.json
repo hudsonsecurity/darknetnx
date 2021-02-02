@@ -120,15 +120,22 @@
         "name": "runtime",
         "envname": "RUNTIME"
       },
+
       {
         "source": "url",
-        "name": "pushovertoken",
-        "envname": "PUSHOVERTOKEN"
+        "name": "threshold",
+        "envname": "threshold"
       },
+
       {
         "source": "url",
-        "name": "pushoveruser",
-        "envname": "PUSHOVERUSER"
+        "name": "tgtoken",
+        "envname": "TGTOKEN"
+      },
+      {\
+        "source": "url",
+        "name": "tgid",
+        "envname": "TGID"
       }
 
 

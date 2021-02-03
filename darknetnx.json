@@ -132,7 +132,7 @@
         "name": "tgtoken",
         "envname": "TGTOKEN"
       },
-      {\
+      {
         "source": "url",
         "name": "tgid",
         "envname": "TGID"
